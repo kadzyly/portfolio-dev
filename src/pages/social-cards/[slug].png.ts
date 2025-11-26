@@ -90,14 +90,14 @@ export async function GET(context: APIContext) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getSortedPosts()
-  return posts
-    .map((post) => ({
-      params: { slug: post.id },
+  const projects = await getSortedPosts()
+  return projects
+    .map((project) => ({
+      params: { slug: project.id },
       props: {
-        pubDate: post.data.published ? dateString(post.data.published) : undefined,
-        title: post.data.title,
-        author: post.data.author || siteConfig.author,
+        pubDate: project.data.published ? dateString(project.data.published) : undefined,
+        title: project.data.title,
+        author: project.data.author || siteConfig.author,
       },
     }))
     .concat([

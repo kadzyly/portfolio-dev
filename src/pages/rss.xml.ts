@@ -14,19 +14,19 @@ export async function GET(_context: AstroGlobal) {
     )
     return
   }
-  const posts = await getSortedPosts()
+  const projects = await getSortedPosts()
   return rss({
     stylesheet: '/rss.xsl',
     title: siteConfig.title,
     description: siteConfig.description,
     site: siteConfig.site,
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.published,
-      description: post.data.description,
-      author: post.data.author || siteConfig.author,
-      link: `/posts/${post.id}`,
-      content: sanitizeHtml(parser.render(post.body || ''), {
+    items: projects.map((project) => ({
+      title: project.data.title,
+      pubDate: project.data.published,
+      description: project.data.description,
+      author: project.data.author || siteConfig.author,
+      link: `/projects/${project.id}`,
+      content: sanitizeHtml(parser.render(project.body || ''), {
         allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
       }),
     })),

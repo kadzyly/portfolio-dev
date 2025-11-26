@@ -19,7 +19,7 @@ const config: SiteConfig = {
   // Font imported from @fontsource or elsewhere, used for the entire site.
   // To change this see src/styles/global.css and import a different font.
   font: 'JetBrains Mono Variable',
-  // For pagination, the number of posts to display per page.
+  // For pagination, the number of projects to display per page.
   // The homepage will display half this number in the "Latest Posts" section.
   pageSize: 6,
   // Whether Astro should resolve trailing slashes in URLs or not.
@@ -34,7 +34,7 @@ const config: SiteConfig = {
     },
     {
       name: 'Projects',
-      url: '/posts',
+      url: '/projects',
     },
     {
       name: 'CV',
@@ -159,20 +159,6 @@ const config: SiteConfig = {
     // twitter: 'https://github.com/stelcodes/multiterm-astro',
     rss: true, // Set to true to include an RSS feed link in the footer
   },
-  // Configuration for Giscus comments.
-  // To set up Giscus, follow the instructions at https://giscus.app/
-  // You'll need a GitHub repository with discussions enabled and the Giscus app installed.
-  // Take the values from the generated script tag at https://giscus.app and fill them in here.
-  // IMPORTANT: Update giscus.json in the root of the project with your own website URL
-  // If you don't want to use Giscus, set this to undefined.
-  giscus: undefined,
-  // giscus: {
-  //   repo: 'stelcodes/multiterm-astro',
-  //   repoId: 'R_kgDOPNnBig',
-  //   category: 'Giscus',
-  //   categoryId: 'DIC_kwDOPNnBis4CteOc',
-  //   reactionsEnabled: true, // Enable reactions on post itself
-  // },
   // These are characters available for the character chat feature.
   // To add your own character, add an image file to the top-level `/public` directory
   // Make sure to compress the image to a web-friendly size (<100kb)

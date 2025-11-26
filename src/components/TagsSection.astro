@@ -3,11 +3,11 @@ import type { CollectionEntry } from 'astro:content'
 import { TagsGroup } from '~/utils'
 
 interface Props {
-  posts: CollectionEntry<'posts'>[]
+  projects: CollectionEntry<'projects'>[]
 }
 
-const { posts } = Astro.props
-const tagsGroup = await TagsGroup.build(posts)
+const { projects } = Astro.props
+const tagsGroup = await TagsGroup.build(projects)
 ---
 
 <ul class="flex flex-wrap gap-x-3 gap-y-4 my-5">
