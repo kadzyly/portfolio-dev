@@ -2,7 +2,7 @@ import type { SiteConfig } from '~/types'
 
 const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
-  site: 'https://github.com/kadzyly/blog-game-jams',
+  site: 'https://kadzyly.github.io/portfolio-dev',
   // The name of your site, used in the title and for SEO.
   title: 'Kadzy Ly',
   // The description of your site, used for SEO and RSS feed.
@@ -11,7 +11,7 @@ const config: SiteConfig = {
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: 'Kadzy Ly',
   // Keywords for SEO, used in the meta tags.
-  tags: ['Game jam', 'Unity', 'Game development', 'Unity3D', 'Blog', 'Game dev'],
+  tags: ['Portfolio', 'Game development', 'Game jam', 'Unity', 'Unity3D', 'Game dev'],
   // Path to the image used for generating social media previews.
   // Needs to be a square JPEG file due to limitations of the social card generator.
   // Try https://squoosh.app/ to easily convert images to JPEG.
@@ -33,12 +33,12 @@ const config: SiteConfig = {
       url: '/',
     },
     {
-      name: 'CV',
-      url: '/cv',
+      name: 'Projects',
+      url: '/posts',
     },
     {
-      name: 'Portfolio',
-      url: '/posts',
+      name: 'CV',
+      url: '/cv',
     },
     {
       name: 'GitHub',
