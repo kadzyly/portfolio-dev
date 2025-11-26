@@ -17,10 +17,10 @@ const { page } = Astro.props
 const pageTitle = 'Archive' + (page.currentPage > 1 ? ` - Page ${page.currentPage}` : '')
 ---
 
-<Layout title={pageTitle} description="All posts in the archive">
+<Layout title={pageTitle} description="All projects in the archive">
   <div class="mt-2 sm:mt-0">
     <PageHeader />
-    {page.data.map((post) => <PostPreview post={post} />)}
+    {page.data.map((project) => <PostPreview project={project} />)}
     <Pagination
       prevLink={page.url.prev ? page.url.prev : undefined}
       prevText="Newer Posts"

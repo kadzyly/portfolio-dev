@@ -2,7 +2,7 @@ import type { SiteConfig } from '~/types'
 
 const config: SiteConfig = {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
-  site: 'https://github.com/kadzyly/blog-game-jams',
+  site: 'https://kadzyly.github.io/portfolio-dev',
   // The name of your site, used in the title and for SEO.
   title: 'Kadzy Ly',
   // The description of your site, used for SEO and RSS feed.
@@ -11,7 +11,7 @@ const config: SiteConfig = {
   // The author of the site, used in the footer, SEO, and RSS feed.
   author: 'Kadzy Ly',
   // Keywords for SEO, used in the meta tags.
-  tags: ['Game jam', 'Unity', 'Game development', 'Unity3D', 'Blog', 'Game dev'],
+  tags: ['Portfolio', 'Game development', 'Game jam', 'Unity', 'Unity3D', 'Game dev'],
   // Path to the image used for generating social media previews.
   // Needs to be a square JPEG file due to limitations of the social card generator.
   // Try https://squoosh.app/ to easily convert images to JPEG.
@@ -19,7 +19,7 @@ const config: SiteConfig = {
   // Font imported from @fontsource or elsewhere, used for the entire site.
   // To change this see src/styles/global.css and import a different font.
   font: 'JetBrains Mono Variable',
-  // For pagination, the number of posts to display per page.
+  // For pagination, the number of projects to display per page.
   // The homepage will display half this number in the "Latest Posts" section.
   pageSize: 6,
   // Whether Astro should resolve trailing slashes in URLs or not.
@@ -33,12 +33,12 @@ const config: SiteConfig = {
       url: '/',
     },
     {
-      name: 'CV',
-      url: '/cv',
+      name: 'Projects',
+      url: '/projects',
     },
     {
-      name: 'Portfolio',
-      url: '/posts',
+      name: 'CV',
+      url: '/cv',
     },
     {
       name: 'GitHub',
@@ -159,20 +159,6 @@ const config: SiteConfig = {
     // twitter: 'https://github.com/stelcodes/multiterm-astro',
     rss: true, // Set to true to include an RSS feed link in the footer
   },
-  // Configuration for Giscus comments.
-  // To set up Giscus, follow the instructions at https://giscus.app/
-  // You'll need a GitHub repository with discussions enabled and the Giscus app installed.
-  // Take the values from the generated script tag at https://giscus.app and fill them in here.
-  // IMPORTANT: Update giscus.json in the root of the project with your own website URL
-  // If you don't want to use Giscus, set this to undefined.
-  giscus: undefined,
-  // giscus: {
-  //   repo: 'stelcodes/multiterm-astro',
-  //   repoId: 'R_kgDOPNnBig',
-  //   category: 'Giscus',
-  //   categoryId: 'DIC_kwDOPNnBis4CteOc',
-  //   reactionsEnabled: true, // Enable reactions on post itself
-  // },
   // These are characters available for the character chat feature.
   // To add your own character, add an image file to the top-level `/public` directory
   // Make sure to compress the image to a web-friendly size (<100kb)

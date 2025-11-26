@@ -9,7 +9,7 @@ coverImage:
   alt: 'A person with short, thick hair and prescription glasses sits at an organized workstation, using a magnification app to navigate a webpage. Their posture is proper and relaxed. On the desk: a computer, a mouse, a large desk lamp and a small notebook.'
 ---
 
-Since the post does not have a description in the frontmatter, the first paragraph is used.
+Since the project does not have a description in the frontmatter, the first paragraph is used.
 
 ## Theming
 
@@ -78,10 +78,10 @@ _Italic text_
 
 Images can include a title string after the URL to render as a `<figure>` with a `<figcaption>`.
 
-![Pixel art of a tree](./PixelatedGreenTreeSide.png 'Pixel art renders poorly without proper CSS')
+![Pixel art of a tree](PixelatedGreenTreeSide.png 'Pixel art renders poorly without proper CSS')
 
 ```md title="Pixel art markdown" wrap
-![Pixel art of a tree](./PixelatedGreenTreeSide.png 'Pixel art renders poorly without proper CSS')
+![Pixel art of a tree](PixelatedGreenTreeSide.png 'Pixel art renders poorly without proper CSS')
 ```
 
 I've also added a special tag for pixel art that adds the correct CSS to render properly. Just add `#pixelated` to the very end of the alt string.
