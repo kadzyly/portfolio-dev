@@ -5,5 +5,5 @@ export const SITE = {
   ogImage: '/og-image.png',
   desc: "Portfolio",
   title: import.meta.env.PUBLIC_PROJECT_AUTHOR,
-  postPerPage: 10,
+  postPerPage: 999,
 } as const;
