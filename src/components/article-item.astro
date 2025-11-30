@@ -13,10 +13,14 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
   month: "short",
   year: "numeric",
 }).format(article.data.pubDatetime);
+
+const link = import.meta.env.MODE == "production"
+  ? `/${import.meta.env.PUBLIC_BASE_URL}/articles/${article.id}`
+  : `/articles/${article.id}`;
 ---
 
 <a
-  href={`/articles/${article.id}/`}
+  href={link}
   class="card rounded-box bg-base-100 shadow-md sm:card-side"
 >
   {

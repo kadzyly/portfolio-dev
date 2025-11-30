@@ -7,11 +7,15 @@ interface Props {
 }
 
 const { project } = Astro.props;
+
+const link = import.meta.env.MODE == "production"
+  ? `/${import.meta.env.PUBLIC_BASE_URL}/projects/${project.id}`
+  : `/projects/${project.id}`;
 ---
 
 <a
   class="card rounded-xl border-gray-700 bg-base-100 card-border"
-  href={`/projects/${project.id}/`}
+  href={link}
   title={project.data.name}
 >
   {
