@@ -8,6 +8,7 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   site: "https://kadzyly.github.io",
   base: "/portfolio-dev",
+  trailingSlash: "always",
   integrations: [react(), mdx()],
   vite: {
     plugins: [
