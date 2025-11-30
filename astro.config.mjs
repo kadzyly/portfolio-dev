@@ -7,7 +7,7 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   site: "https://kadzyly.github.io",
-  base: "/portfolio-dev/",
+  base: import.meta.env.MODE === "production" ? "/portfolio-dev" : "/" ,
   trailingSlash: "always",
   integrations: [react(), mdx()],
   vite: {
