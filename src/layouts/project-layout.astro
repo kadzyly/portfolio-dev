@@ -1,0 +1,56 @@
+---
+import { capitalizeFirstLetter } from "@/lib/utils";
+import Layout from "./layout.astro";
+import { GitHubLight } from "developer-icons";
+
+import { ExternalLink } from "lucide-react";
+
+interface Props {
+  title: string;
+  technologies: string[];
+  sourceCode?: string;
+  preview?: string;
+  image?: string;
+  description: string;
+}
+
+const { title, technologies, description, preview, sourceCode, image } =
+  Astro.props;
+---
+
+<Layout title={`${title}`} ogImage={image} description={description}>
+  <header>
+    <h1>{capitalizeFirstLetter(title)}</h1>
+  </header>
+
+  <ul>
+    <li class="flex flex-wrap gap-1">
+      {
+        technologies.map(technology => {
+          return <div class="badge">{technology}</div>;
+        })
+      }
+    </li>
+  </ul>
+
+  <div>
+    {
+      sourceCode && (
+        <a class="btn" target="_blank" href={sourceCode}>
+          Source <GitHubLight className="size-3" />
+        </a>
+      )
+    }
+    {
+      preview && (
+        <a class="btn" target="_blank" href={preview}>
+          Preview <ExternalLink className="size-3" />
+        </a>
+      )
+    }
+  </div>
+
+  <article class="prose w-full min-w-full">
+    <slot />
+  </article>
+</Layout>

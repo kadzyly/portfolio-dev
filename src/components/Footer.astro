@@ -1,30 +1,19 @@
 ---
-import siteConfig from '~/site.config'
-import SocialLinks from '~/components/SocialLinks.astro'
+import { SOCIAL_LINKS } from "@/lib/constants";
 ---
 
-<footer
-  class="mt-auto pt-9 md:pt-11 grow-0 flex flex-col gap-6 items-center justify-between max-w-full text-foreground/80"
->
-  {siteConfig.socialLinks && <SocialLinks socialLinks={siteConfig.socialLinks} />}
-  <div class="flex flex-col md:flex-row flex-wrap flex-1 items-center justify-center">
-    <span class="my-1">
-      {siteConfig.author} © {new Date().getFullYear()}
-    </span>
-    <span class="mx-5 hidden md:block"> :: </span>
-    <span class="my-1">
-      Powered by <a
-        class="underline"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://astro.build">Astro</a
-      >
-      & <a
-        class="underline"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://github.com/stelcodes/multiterm-astro">MultiTerm</a
-      >
-    </span>
-  </div>
+<footer class="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+  <nav>
+    <div class="grid grid-flow-col gap-4">
+      <div class="flex items-center justify-center gap-4">
+        {
+          SOCIAL_LINKS.map(link => (
+            <a href={link.url} title={link.name}>
+              <link.icon className="size-4 duration-150 hover:text-primary" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </nav>
 </footer>

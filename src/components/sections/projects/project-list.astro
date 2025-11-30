@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import ProjectItem from "@/components/sections/projects/project-item.astro";
+
+const projects = await getCollection("projects");
+
+const coreProjects = projects.filter(project => project.data.type === "games");
+const sideProjects = projects.filter(project => project.data.type === "frontend");
+---
+
+<div>
+  <header>
+    <h3 class="mb-4 text-2xl font-bold">Games</h3>
+  </header>
+
+  <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
+    {
+      coreProjects.map(item => (
+        <li>
+          <ProjectItem project={item} />
+        </li>
+      ))
+    }
+  </ul>
+
+  {
+    sideProjects.length > 0 && (
+      <div class="mt-8">
+        <header>
+          <h3 class="mb-4 text-2xl font-bold">Frontend</h3>
+        </header>
+
+        <ul class="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
+          {sideProjects.map(item => (
+            <li>
+              <ProjectItem project={item} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</div>

@@ -1,0 +1,15 @@
+---
+import Layout from "./layout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  backLink?: string;
+}
+
+const { title  } = Astro.props;
+---
+
+<Layout title={`${title}`}>
+  <slot />
+</Layout>

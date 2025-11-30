@@ -1,0 +1,43 @@
+---
+import { ActivityCalendar } from "react-activity-calendar";
+
+interface Props {
+  username: string;
+  year?: number | "last";
+}
+
+const { username, year } = Astro.props;
+
+const gitHubTheme = {
+  light: ["#1D232A", "#393F46", "#5F656F", "#878E9A", "#A6ADBB"],
+};
+
+const API_URL = `https://github-contributions-api.jogruber.de/v4/${username}${year ? `?y=${year}` : ""}`;
+
+let data: any[] = [];
+try {
+  const response = await fetch(API_URL);
+  if (response.ok) {
+    const result = await response.json();
+    data = result.contributions;
+  }
+} catch (error) {
+  console.error("Failed to fetch GitHub activity data:", error);
+}
+---
+
+<div data-client:load>
+  {
+    data.length > 0 ? (
+      <ActivityCalendar
+        data={data}
+        theme={gitHubTheme}
+        blockMargin={2}
+        blockSize={10}
+        weekStart={1}
+      />
+    ) : (
+      <div />
+    )
+  }
+</div>

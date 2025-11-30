@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { ChevronRightIcon, NotebookPen } from "lucide-react";
+
+interface Props {
+  article: CollectionEntry<"blog">;
+}
+
+const { article } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat("en-GB", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
+}).format(article.data.pubDatetime);
+---
+
+<a
+  href={`/articles/${article.id}`}
+  class="card rounded-box bg-base-100 shadow-md sm:card-side"
+>
+  {
+    article.data.image && (
+      <figure class="sm:max-h-auto max-h-40 shrink-0 sm:w-40">
+        <img src={article.data.image} alt={article.data.title} />
+      </figure>
+    )
+  }
+
+  <div class="card-body">
+    <header>
+      <h3 class="card-title">{article.data.title}</h3>
+    </header>
+
+    <ul class="items-centergap-x-4 flex flex-wrap gap-2">
+      {article.data.tags.map(tag => <li>#{tag}</li>)}
+    </ul>
+
+    <p class="list-col-wrap text-xs">
+      {formattedDate}
+    </p>
+  </div>
+</a>

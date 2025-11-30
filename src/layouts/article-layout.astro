@@ -1,0 +1,40 @@
+---
+import { capitalizeFirstLetter } from "@/lib/utils";
+import Layout from "./layout.astro";
+import Toc from "@/components/toc.astro";
+
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  title: string;
+  date: Date;
+  headings: MarkdownHeading[];
+  image?: string;
+  description: string;
+}
+
+const { title, description, date, headings, image } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat("en-GB", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+})
+  .format(date)
+  .replace(/\//g, ".");
+---
+
+<Layout title={`${title}`} ogImage={image} description={description}>
+  <header>
+    <h1>{capitalizeFirstLetter(title)}</h1>
+  </header>
+  <p>
+    {formattedDate}
+  </p>
+
+  <Toc headings={headings} />
+
+  <article class="prose w-full min-w-full">
+    <slot />
+  </article>
+</Layout>

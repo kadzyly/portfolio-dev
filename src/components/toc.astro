@@ -1,0 +1,22 @@
+---
+import type { MarkdownHeading } from "astro";
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+---
+
+<div class="flex-col gap-y-3 lg:flex">
+  <h3 class:list="text-xl">On This Page</h3>
+  {
+    headings
+      .filter(({ depth }) => depth < 3)
+      .map(({ slug, text }) => (
+        <a href={`#${slug}`} class:list={["text-sm font-normal"]}>
+          • {text}
+        </a>
+      ))
+  }
+</div>

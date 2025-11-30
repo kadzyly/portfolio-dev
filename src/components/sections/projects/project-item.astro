@@ -1,0 +1,48 @@
+---
+import MarkdownRenderer from "@/components/ui/markdown-renderer.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+---
+
+<a
+  class="card rounded-xl border-gray-700 bg-base-100 card-border"
+  href={`/projects/${project.id}`}
+  title={project.data.name}
+>
+  {
+    project.data.image && (
+      <figure>
+        <img src={project.data.image} alt={project.data.name} />
+      </figure>
+    )
+  }
+
+  <div class="card-body">
+    <header>
+      <h2 class="card-title">{project.data.name}</h2>
+    </header>
+
+    <MarkdownRenderer content={project.data.description} />
+
+    <div class="mt-2 card-actions justify-end">
+      {
+        project.data.technologies.length > 0 && (
+          <div class="flex flex-wrap gap-1">
+            {project.data.technologies.map(technology => {
+              return (
+                <div class="badge badge-outline badge-sm badge-secondary">
+                  {technology}
+                </div>
+              );
+            })}
+          </div>
+        )
+      }
+    </div>
+  </div>
+</a>

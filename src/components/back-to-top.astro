@@ -1,0 +1,27 @@
+---
+import { ChevronUp } from "lucide-react";
+---
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    function backToTop() {
+      const button = document.querySelector("#back-to-top");
+      if (!button) return;
+
+      button.addEventListener("click", () => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+      });
+    }
+
+    // Initialize the back to top functionality
+    backToTop();
+  });
+</script>
+<button
+  id="back-to-top"
+  title="Back to Top"
+  class="btn fixed right-4 bottom-4 z-50"
+>
+  <ChevronUp />
+</button>

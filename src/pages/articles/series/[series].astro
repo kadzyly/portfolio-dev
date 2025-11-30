@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+import ArticleItem from "@/components/article-item.astro";
+import PageLayout from "@/layouts/page-layout.astro";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("blog");
+
+  return articles
+    .map(article => ({
+      params: { series: article.data.series || "" },
+    }))
+    .filter(({ params }) => params.series !== "");
+}
+
+const { series } = Astro.params;
+
+const articels = await getCollection("blog");
+const seiriesArticles = articels.filter(
+  article => article.data.series === series
+);
+
+// Page properties
+const title = series;
+const description = `Deep dive into ${series} a curated series.`;
+---
+
+<PageLayout backLink="/articles" description={description} title={title}>
+  <header>
+    <h1 class="mb-4 text-4xl font-extrabold">Articles</h1>
+  </header>
+  <div>
+    {seiriesArticles.map(article => <ArticleItem article={article} />)}
+  </div>
+</PageLayout>

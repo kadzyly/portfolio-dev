@@ -1,0 +1,98 @@
+---
+import {
+  TECH_STACK_FRONTEND,
+  TECH_STACK_CORE,
+  TECH_STACK_GAMES,
+} from "@/lib/constants/tech-stack";
+---
+
+<header class="hidden">
+  <h2>Tech Stack</h2>
+</header>
+
+<div class="tabs-border tabs">
+  <input
+    type="radio"
+    name="tech_tabs"
+    class="tab"
+    aria-label="All"
+    checked="checked"
+  />
+  <div
+    class="tab-content rounded-xl border-gray-700 bg-base-100 p-5 card-border"
+  >
+    <ul class="mt-2 flex flex-wrap gap-2">
+      {
+        [...TECH_STACK_GAMES, ...TECH_STACK_FRONTEND, ...TECH_STACK_CORE].map(
+          item => (
+            <li>
+              <a
+                class="btn"
+                href={item.href}
+                target="_blank"
+                title={item.title}
+              >
+                {item.icon && <item.icon className="size-6" />}
+                {item.title}
+              </a>
+            </li>
+          )
+        )
+      }
+    </ul>
+  </div>
+
+  <input type="radio" name="tech_tabs" class="tab" aria-label="Game dev" />
+  <div
+    class="tab-content rounded-xl border-gray-700 bg-base-100 p-5 card-border"
+  >
+    <ul class="mt-2 flex flex-wrap gap-2">
+      {
+        TECH_STACK_GAMES.map(item => (
+          <li>
+            <a class="btn" href={item.href} target="_blank" title={item.title}>
+              {item.icon && <item.icon className="size-6" />}
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <input type="radio" name="tech_tabs" class="tab" aria-label="Frontend" />
+  <div
+    class="tab-content rounded-xl border-gray-700 bg-base-100 p-5 card-border"
+  >
+    <ul class="mt-2 flex flex-wrap gap-2">
+      {
+        TECH_STACK_FRONTEND.map(item => (
+          <li>
+            <a class="btn" href={item.href} target="_blank" title={item.title}>
+              {item.icon && <item.icon className="size-6" />}
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <input type="radio" name="tech_tabs" class="tab" aria-label="Base" />
+  <div
+    class="tab-content rounded-xl border-gray-700 bg-base-100 p-5 card-border"
+  >
+    <ul class="mt-2 flex flex-wrap gap-2">
+      {
+        TECH_STACK_CORE.map(item => (
+          <li>
+            <a class="btn" href={item.href} target="_blank" title={item.title}>
+              {item.icon && <item.icon className="size-6" />}
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

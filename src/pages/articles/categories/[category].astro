@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+import ArticleItem from "@/components/article-item.astro";
+import PageLayout from "@/layouts/page-layout.astro";
+
+export async function getStaticPaths() {
+  const articels = await getCollection("blog");
+  return articels.map(article => ({
+    params: { category: article.data.category },
+  }));
+}
+
+const { category } = Astro.params;
+
+const articels = await getCollection("blog");
+const categoryArticles = articels.filter(
+  article => article.data.category === category
+);
+
+// Page properties
+const title = category;
+const description = `Exploring ${category} insights, lessons, and discoveries from my software engineering journey.`;
+---
+
+<PageLayout backLink="/articles" description={description} title={title}>
+  <header>
+    <h1 class="mb-4 text-4xl font-extrabold">Articles</h1>
+  </header>
+  <div>
+    {categoryArticles.map(article => <ArticleItem article={article} />)}
+  </div>
+</PageLayout>

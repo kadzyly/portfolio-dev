@@ -1,59 +1,26 @@
 ---
-import Layout from '~/layouts/Layout.astro'
-import { getSortedPosts } from '~/utils'
-import { getCollection, render } from 'astro:content'
-import PostPreview from '~/components/PostPreview.astro'
-import Pagination from '~/components/Pagination.astro'
-import BlockHeader from '~/components/BlockHeader.astro'
-import HomeBanner from '~/components/HomeBanner.astro'
-import siteConfig from '~/site.config'
-
-const home = await getCollection('home')
-let HomeContent
-let homeAvatarImage
-let homeGithubCalendar
-if (home.length > 0) {
-  const homeEntry = home[0]
-  const { Content } = await render(homeEntry)
-  HomeContent = Content
-  homeAvatarImage = homeEntry.data.avatarImage
-  homeGithubCalendar = homeEntry.data.githubCalendar
-}
-const sortedPosts = await getSortedPosts()
-const postsHaveTags = sortedPosts.some(
-  (project) => project.data.tags && project.data.tags.length > 0,
-)
+import Layout from "@/layouts/layout.astro";
+import Profile from "@/components/profile.astro";
+import About from "@/components/sections/about.astro";
+import TechStack from "@/components/tech-stack.astro";
+import ProjectList from "@/components/sections/projects/project-list.astro";
 ---
 
-<Layout>
-  {
-    HomeContent && (
-      <HomeBanner avatarImage={homeAvatarImage} githubCalendar={homeGithubCalendar}>
-        <HomeContent />
-      </HomeBanner>
-    )
-  }
-  {
-    sortedPosts.length > 0 && (
-      <section>
-        <BlockHeader>Portfolio</BlockHeader>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {sortedPosts
-            .reverse()
-            .slice(0, Math.floor(siteConfig.pageSize / 2))
-            .map((project) => (
-              <PostPreview project={project} />
-            ))}
-        </div>
+<Layout title={import.meta.env.PUBLIC_PROJECT_AUTHOR}>
+  <div class="mb-14">
+    <Profile />
+  </div>
 
-        <Pagination nextLink="/projects" nextText="All projects" />
-      </section>
-    )
-  }
+  <About />
+
+  <section class="my-10">
+    <TechStack />
+  </section>
+
+  <section>
+    <header class="hidden">
+      <h2>Projects</h2>
+    </header>
+    <ProjectList />
+  </section>
 </Layout>
-
-<style is:global>
-  a.heading-anchor {
-    display: none !important;
-  }
-</style>

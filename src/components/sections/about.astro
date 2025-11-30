@@ -1,0 +1,8 @@
+---
+import GitHubActivity from "../github-activity.astro";
+import Card from "../card.astro";
+---
+
+<Card>
+  <GitHubActivity username={import.meta.env.PUBLIC_USERNAME} client:load />
+</Card>

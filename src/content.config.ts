@@ -1,56 +1,36 @@
-import { defineCollection, z } from 'astro:content'
-import { glob } from 'astro/loaders'
+import { defineCollection, z } from "astro:content";
+import { glob } from "astro/loaders";
 
-const postsCollection = defineCollection({
-  loader: glob({ pattern: ['**/*.md', '**/*.mdx'], base: './src/content/projects' }),
-  schema: ({ image }) =>
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/data/blog" }),
+  schema: () =>
     z.object({
+      pubDatetime: z.date(),
+      series: z.string().optional(),
+      image: z.string().optional(),
       title: z.string(),
-      published: z.coerce.date(),
-      // updated: z.coerce.date().optional(),
-      draft: z.boolean().optional().default(false),
-      description: z.string().optional(),
-      author: z.string().optional(),
-      tags: z.array(z.string()).optional().default([]),
-      coverImage: z
-        .strictObject({
-          src: image(),
-          alt: z.string(),
-        })
-        .optional(),
-      toc: z.boolean().optional().default(true),
+      draft: z.boolean().optional(),
+      tags: z.array(z.string()).default(["others"]),
+      category: z.string(),
+      description: z.string(),
     }),
-})
+});
 
-const homeCollection = defineCollection({
-  loader: glob({ pattern: ['home.md', 'home.mdx'], base: './src/content' }),
-  schema: ({ image }) =>
+const projects = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/data/projects" }),
+  schema: () =>
     z.object({
-      avatarImage: z
-        .object({
-          src: image(),
-          alt: z.string().optional().default('My avatar'),
-        })
-        .optional(),
-      githubCalendar: z.string().optional(), // GitHub username for calendar
+      name: z.string(),
+      technologies: z.array(z.string()),
+      description: z.string(),
+      image: z.string().optional(),
+      sourceCode: z.string().optional(),
+      preview: z.string().optional(),
+      type: z.union([
+        z.literal("games"),
+        z.literal("frontend"),
+      ])
     }),
-})
+});
 
-const addendumCollection = defineCollection({
-  loader: glob({ pattern: ['addendum.md', 'addendum.mdx'], base: './src/content' }),
-  schema: ({ image }) =>
-    z.object({
-      avatarImage: z
-        .object({
-          src: image(),
-          alt: z.string().optional().default('My avatar'),
-        })
-        .optional(),
-    }),
-})
-
-export const collections = {
-  projects: postsCollection,
-  home: homeCollection,
-  addendum: addendumCollection,
-}
+export const collections = { blog, projects };

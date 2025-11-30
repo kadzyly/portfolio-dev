@@ -1,0 +1,43 @@
+---
+import ArticleItem from "@/components/article-item.astro";
+
+import { getCollection } from "astro:content";
+
+import { SITE } from "@/lib/config";
+import type { GetStaticPaths } from "astro";
+import Pagination from "@/components/pagination.astro";
+import PageLayout from "@/layouts/page-layout.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const articles = await getCollection("blog", ({ data }) => !data.draft);
+  const sortedArticles = articles.sort(
+    (a, b) => b.data.pubDatetime.getTime() - a.data.pubDatetime.getTime()
+  );
+  return paginate(sortedArticles, { pageSize: SITE.postPerPage });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<PageLayout
+  description="description"
+  title="title"
+>
+  <header>
+    <h1 class="mb-4 text-4xl font-extrabold">Articles</h1>
+  </header>
+
+  <ul class="list">
+    {
+      page.data.map(article => (
+        <li class="mb-4">
+          <ArticleItem article={article} />
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="mt-4 flex justify-center">
+    <Pagination page={page} />
+  </div>
+</PageLayout>
