@@ -4,19 +4,19 @@ export const NAV_LINKS = [
   {
     label: "Home",
     href: import.meta.env.MODE == "production"
-      ? `${import.meta.env.VITE_PUBLIC_BASE_URL}`
+      ? `/portfolio-dev`
       : "/",
   },
   {
     label: "Articles",
     href: import.meta.env.MODE == "production"
-      ? `${import.meta.env.VITE_PUBLIC_BASE_URL}/articles/`
+      ? `/portfolio-dev/articles/`
       : "/articles/",
   },
   {
     label: "Projects",
     href: import.meta.env.MODE == "production"
-      ? `${import.meta.env.VITE_PUBLIC_BASE_URL}/projects/`
+      ? `/portfolio-dev/projects/`
       : "/projects/",
   },
 ] as const;
