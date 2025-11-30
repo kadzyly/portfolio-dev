@@ -32,6 +32,7 @@ jobs:
           PUBLIC_BASE_URL: /portfolio-dev/
           PUBLIC_USERNAME: kadzyly
           PUBLIC_PROJECT_AUTHOR: Kadzy Ly
+          ASTRO_BASE: /portfolio-dev/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
