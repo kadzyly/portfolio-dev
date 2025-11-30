@@ -6,7 +6,8 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kadzyly.github.io/portfolio-dev',
+  site: "https://kadzyly.github.io",
+  base: "/portfolio-dev",
   integrations: [react(), mdx()],
   vite: {
     plugins: [
