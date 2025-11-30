@@ -5,8 +5,8 @@ import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 
 export default defineConfig({
-  site: "https://kadzyly.github.io",
-  base: process.env.BASE || "/",
+  site: "https://kadzyly.github.io/portfolio-dev",
+  base: process.env.NODE_ENV === 'production' ? '/portfolio-dev/' : '/',
   integrations: [react(), mdx()],
   vite: {
     plugins: [tailwindcss()],
