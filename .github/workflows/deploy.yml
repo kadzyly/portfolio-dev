@@ -33,7 +33,7 @@ jobs:
       - name: Build with Astro
         run: npm run build
         env:
-          PUBLIC_BASE_URL: /portfolio-dev/
+          PUBLIC_BASE_URL: /portfolio-dev
           PUBLIC_USERNAME: kadzyly
           PUBLIC_PROJECT_AUTHOR: Kadzy Ly
 

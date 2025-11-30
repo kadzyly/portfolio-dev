@@ -3,15 +3,15 @@ import { GitHubLight, LinkedIn, Twitter } from "developer-icons";
 export const NAV_LINKS = [
   {
     label: "Home",
-    href: import.meta.env.MODE == "production" ? `/${import.meta.env.PUBLIC_BASE_URL}` : "/",
+    href: import.meta.env.MODE == "production" ? `${import.meta.env.PUBLIC_BASE_URL}` : "/",
   },
   {
     label: "Articles",
-    href: import.meta.env.MODE == "production" ? `/${import.meta.env.PUBLIC_BASE_URL}/articles/` : "/articles/",
+    href: import.meta.env.MODE == "production" ? `${import.meta.env.PUBLIC_BASE_URL}/articles/` : "/articles/",
   },
   {
     label: "Projects",
-    href: import.meta.env.MODE == "production" ? `/${import.meta.env.PUBLIC_BASE_URL}/projects/` : "/projects/",
+    href: import.meta.env.MODE == "production" ? `${import.meta.env.PUBLIC_BASE_URL}/projects/` : "/projects/",
   },
 ] as const;
 
