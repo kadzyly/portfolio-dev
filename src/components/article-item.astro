@@ -15,7 +15,7 @@ const formattedDate = new Intl.DateTimeFormat("en-GB", {
 }).format(article.data.pubDatetime);
 
 const link = import.meta.env.MODE == "production"
-  ? `${import.meta.env.PUBLIC_BASE_URL}/articles/${article.id}`
+  ? `${import.meta.env.VITE_PUBLIC_BASE_URL}/articles/${article.id}`
   : `/articles/${article.id}`;
 ---
 
