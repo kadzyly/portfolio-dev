@@ -6,7 +6,7 @@ import mdx from "@astrojs/mdx";
 
 export default defineConfig({
   site: "https://kadzyly.github.io/portfolio-dev",
-  base: import.meta.env.MODE === "development" ? "/" : "/portfolio-dev",
+  base: process.env.NODE_ENV === 'production' ? '/portfolio-dev/' : '/',
   integrations: [react(), mdx()],
   vite: {
     plugins: [tailwindcss()],
@@ -14,6 +14,6 @@ export default defineConfig({
       alias: {
         "@/": new URL("./src/", import.meta.url).pathname,
       },
-    },
-  },
+    }
+  }
 });
