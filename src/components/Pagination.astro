@@ -12,7 +12,7 @@ const { page } = Astro.props;
 <nav class="join items-center gap-2">
   <a
     class="btn join-item"
-    disabled={!page.url.prev}
+    class:list={ !page.url.prev ? "btn-disabled" : "" }
     href={page.url.prev as string}
   >
     «
@@ -22,7 +22,7 @@ const { page } = Astro.props;
   </p>
   <a
     class="btn join-item"
-    disabled={!page.url.next}
+    class:list={ !page.url.next ? "btn-disabled" : "" }
     href={page.url.next as string}
   >
     »
